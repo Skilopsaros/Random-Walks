@@ -9,7 +9,7 @@ import copy
 E1 = 0
 E2 = 0
 E3 = 0
-while input('Type  Y to run Energy level 1 of one dimentional infinite square well ')=='Y':
+while input('Run Energy level 1 of one dimentional infinite square well? (Y/N) ')=='Y':
     J = int(input('input the value of J: '))
     number_of_drunkards = int(input('input the number of drunkards: '))
     number_of_runs = int(input('input the number of runs: '))
@@ -47,7 +47,7 @@ while input('Type  Y to run Energy level 1 of one dimentional infinite square we
     plt.show()
     plt.clf()
 
-while input('Type  Y to run Energy level 2 of one dimentional infinite square well ')=='Y':
+while input('Run Energy level 2 of one dimentional infinite square well? (Y/N) ')=='Y':
     J = int(input('input the value of J: '))
     number_of_drunkards = int(input('input the number of drunkards: '))
     number_of_runs = int(input('input the number of runs: '))
@@ -85,7 +85,7 @@ while input('Type  Y to run Energy level 2 of one dimentional infinite square we
     plt.show()
     plt.clf()
 
-while input('Type  Y to run Energy level 1 of two dimentional infinite circle well ')=='Y':
+while input('Run Energy level 1 of two dimentional infinite circle well? (Y/N) ')=='Y':
     J = int(input('input the value of J: '))
     number_of_drunkards = int(input('input the number of drunkards: '))
     number_of_runs = int(input('input the number of runs: '))
@@ -123,7 +123,7 @@ while input('Type  Y to run Energy level 1 of two dimentional infinite circle we
     plt.show()
     plt.clf()
 
-while input('Type  Y to run Energy level 2 of two dimentional infinite circle well ')=='Y':
+while input('Run Energy level 2 of two dimentional infinite circle well? (Y/N) ')=='Y':
     J = int(input('input the value of J: '))
     number_of_drunkards = int(input('input the number of drunkards: '))
     number_of_runs = int(input('input the number of runs: '))
@@ -162,7 +162,7 @@ while input('Type  Y to run Energy level 2 of two dimentional infinite circle we
     plt.clf()
 
 
-while input('Type  Y to run Energy level 3 of two dimentional infinite circle well ')=='Y':
+while input('Run Energy level 3 of two dimentional infinite circle well? (Y/N) ')=='Y':
     J = int(input('input the value of J: '))
     number_of_drunkards = int(input('input the number of drunkards: '))
     number_of_runs = int(input('input the number of runs: '))
