@@ -1,0 +1,12 @@
+version: '2.4'
+
+volumes:
+  local_data: {}
+
+services:
+  collector: &collector
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
