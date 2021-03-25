@@ -32,7 +32,10 @@ while input('Run Energy level 1 of one dimentional infinite square well? (Y/N) '
         xs = xs_decoupled
         k = np.array(ks_decoupled)
     m, c, am, ac = slp.best_fit_slope_and_intercept(xs,np.log(k))
+    print('This is the value of the Energy divided by pi squared and multiplied by 8, in units where hbar squared over ma^2 is 1')
+    print('to make a long story short, we expect this number to be 1')
     print(-8*m*J*J/pow(maths.pi,2))
+    print('and this is the error of the above number')
     print(-8*am*J*J/pow(maths.pi,2))
 
 
