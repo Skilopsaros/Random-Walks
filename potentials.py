@@ -1,8 +1,7 @@
-def one_d_inf_sqare_well_E1(return_dimensions=False, coordinates = [0], j=8):
-
+def one_d_inf_sqare_well_E1(return_dimensions=False, coordinates = [0], j=8): #this is the first potential
     if return_dimensions:
-        return(1)
-    return(abs(coordinates[0]) < j)
+        return(1) #the one dimentional infinite square well has one dimension
+    return(abs(coordinates[0]) < j) #keep them alive only if their coordinate is lower than J
 
 def one_d_inf_sqare_well_E2(return_dimensions=False, coordinates=[0], j=8):
     if return_dimensions:
