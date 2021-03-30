@@ -200,3 +200,32 @@ while input('Run Energy level 3 of two dimentional infinite circle well? (Y/N) '
     plt.plot([xs[0],xs[len(xs)-1]],[(m*xs[0]+c),(m*xs[len(xs)-1]+c)])
     plt.show()
     plt.clf()
+
+
+while input('Run Energy level 1 of SHO? (Y/N) ')=='Y':
+    J = int(input('input the value of J: '))
+    number_of_drunkards = int(input('input the number of drunkards: '))
+    number_of_runs = int(input('input the number of runs: '))
+    number_to_cut = int(input('input the number to cut: '))
+
+    ks, dead = drk.simulation(pnt.one_d_SHO_E1, J, number_of_drunkards, number_of_runs)
+    ks_copy=copy.deepcopy(ks)
+    for i in range(number_to_cut):
+        del(ks[0])
+    xs = range(len(ks))
+    k = np.array(ks)
+    m, c, am, ac = slp.best_fit_slope_and_intercept(xs,np.log(k))
+    print(-m*J)
+    print(am)
+
+
+    plt.plot(range(len(dead)),dead)
+    plt.show()
+    plt.clf()
+    plt.subplot(1,2,1)
+    plt.plot(range(len(ks_copy)),ks_copy)
+    plt.subplot(1,2,2)
+    plt.scatter(xs,np.log(k), s=1, marker='x')
+    plt.plot([xs[0],xs[len(xs)-1]],[(m*xs[0]+c),(m*xs[len(xs)-1]+c)])
+    plt.show()
+    plt.clf()
