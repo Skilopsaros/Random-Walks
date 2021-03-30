@@ -19,10 +19,10 @@ class drunkard:
 
 ####################################################################################
 # the potentials are all in potentials.py
-def simulation(potential, j, drunkard_number, max_step, starting_points = [False]):
+def simulation(potential, j, drunkard_number, max_step):
     '''this function takes a potential and simulates a specified number of drunkards, for a specified number of steps, with a paramtre to be given to the potential and a set of starting points for the drunkards'''
     dimensions = potential(return_dimensions = True) #check how many dimensions the problem has
-
+    starting_points = potential(return_starting_pints = True)
     drunkards = []
     for i in range(len(starting_points)): #generate your drunkards dividing them equally between starting points
         for k in range(maths.floor(drunkard_number/len(starting_points))):
