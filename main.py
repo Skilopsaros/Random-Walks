@@ -38,6 +38,8 @@ def run(text,ask_decouple,potential,multiply,power):
         print('plus/minus')
         print(-am*multiply*pow(J,power)) #this error is too small
 
+        print('energy')
+        print((-m*J*J-J)*2/3)
         plt.plot(range(len(dead)),dead) #plot how many died each turn
         plt.show()
         plt.clf()
@@ -50,9 +52,14 @@ def run(text,ask_decouple,potential,multiply,power):
         plt.clf()
 
 
+
 run('Energy level 1 of 1 dimentional infinite square well',True,pnt.one_d_inf_sqare_well_E1,8/pow(maths.pi,2),2)
 run('Energy level 2 of 1 dimentional infinite square well',True,pnt.one_d_inf_sqare_well_E2,2/pow(maths.pi,2),2)
 run('Energy level 1 of 2 dimentional infinite circle well',True,pnt.two_d_inf_cyrcle_well_E1,2/pow(maths.pi,2),2)
 run('Energy level 2 of 2 dimentional infinite circle well',True,pnt.two_d_inf_cyrcle_well_E2,2/pow(maths.pi,2),2)
 run('Energy level 3 of 2 dimentional infinite circle well',True,pnt.two_d_inf_cyrcle_well_E3,2/pow(maths.pi,2),2)
 run('Energy level 1 of SHO',False,pnt.one_d_SHO_E1,1,1)
+run('Energy level 2 of SHO',False,pnt.one_d_SHO_E2,1,1)
+run('Energy level 1 of Hydrogen',False,pnt.hydrogen_E1,1,0)
+#print('energy')
+#print((-m*J*J-J)*2/3)

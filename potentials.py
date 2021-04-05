@@ -48,3 +48,23 @@ def one_d_SHO_E1(return_dimensions=False, coordinates = [0], j=8, return_startin
     if return_starting_pints:
         return([False])
     return(random.random()>pow(coordinates[0],2)/(2*j*j))
+
+def one_d_SHO_E2(return_dimensions=False, coordinates = [0], j=8, return_starting_pints = False):
+    if return_dimensions:
+        return(1)
+    if return_starting_pints:
+        return([[-maths.ceil(j/4)],[maths.ceil(j/4)]])
+    if 0==coordinates[0]:
+        return(False)
+    return(random.random()>pow(coordinates[0],2)/(2*j*j))
+
+
+def hydrogen_E1(return_dimensions=False, coordinates = [0], j=8, return_starting_pints = False):
+    if return_dimensions:
+        return(3)
+    if return_starting_pints:
+        return([False])
+    r = maths.sqrt(pow(coordinates[0],2)+pow(coordinates[1],2)+pow(coordinates[2],2))
+    if 0==r:
+        return(True)
+    return(random.random()>(1-1/r)/j)
