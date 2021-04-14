@@ -2,6 +2,7 @@ import numpy as np
 import math as maths
 import random
 from progress.bar import Bar
+import copy
 
 class drunkard:
     """ Each object of this class represents a single drunkard. When initialised, takes the number of dimensions the drunkard exists on. Has the ability to take a step in a random direction"""
@@ -19,7 +20,7 @@ class drunkard:
 
 ####################################################################################
 # the potentials are all in potentials.py
-def simulation(potential, j, drunkard_number, max_step):
+def simulation(potential, j, drunkard_number, max_step, return_positions = False):
     '''this function takes a potential and simulates a specified number of drunkards, for a specified number of steps, with a paramtre to be given to the potential and a set of starting points for the drunkards'''
     dimensions = potential(return_dimensions = True) #check how many dimensions the problem has
     starting_points = potential(return_starting_pints = True)
@@ -42,4 +43,25 @@ def simulation(potential, j, drunkard_number, max_step):
             kills.append(killed)
             ks.append(len(drunkards)) #add how many have survived up to this step
             bar.next() #I just really like progress bars
+    if return_positions:
+        drunkards_copy = copy.deepcopy(drunkards)
+        for i in range(len(drunkards) - 1, -1, -1): #for every drunkard, itterating backwards because otherwise we are going to mess things up
+            drunkards[i].step() #take a random step
+            if not(potential(coordinates = drunkards[i].coordinates, j=j)): #check with the potential to see you're not removed
+                del(drunkards[i])
+        drunkards.extend(drunkards_copy)
+        furthest_position = 0
+        for i in range(len(drunkards)):
+            for j in range(len(drunkards[i].coordinates)):
+                if abs(drunkards[i].coordinates[j])>furthest_position:
+                    furthest_position = abs(drunkards[i].coordinates[j])
+        furthest_position+=1
+        shape = []
+        for i in range(dimensions):
+            shape.append(int(2*furthest_position+1))
+        lattice = np.zeros(shape).astype(int)
+        for i in range(len(drunkards)):
+            lattice[tuple((drunkards[i].coordinates+furthest_position).astype(int))]+=1
+        return(lattice)
+
     return(ks, kills)

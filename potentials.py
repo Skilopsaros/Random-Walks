@@ -32,18 +32,18 @@ def two_d_inf_cyrcle_well_E1(return_dimensions=False, coordinates=[0,0], j=8, re
 
 def two_d_inf_cyrcle_well_E2(return_dimensions=False, coordinates=[0,0], j=8, return_starting_pints = False, return_results = False, m=0, am = 0):
     if return_results:
-        return(-m*j*j*2/pow(maths.pi,2),am*j*j*2/pow(maths.pi,2))
+        return(-m*j*j,am*j*j)
     if return_dimensions:
         return(2)
     if return_starting_pints:
-        return([[[-maths.ceil(j/2),0],[maths.ceil(j/2),0]]])
+        return([[-maths.ceil(j/2),0],[maths.ceil(j/2),0]])
     if 0==coordinates[0]:
         return(False)
     return(pow(abs(coordinates[0]),2)+pow(abs(coordinates[1]),2) < pow(j,2))
 
 def two_d_inf_cyrcle_well_E3(return_dimensions=False, coordinates=[0,0], j=8, return_starting_pints = False, return_results = False, m=0, am = 0):
     if return_results:
-        return(-m*j*j*2/pow(maths.pi,2),am*j*j*2/pow(maths.pi,2))
+        return(-m*j*j,am*j*j)
     if return_dimensions:
         return(2)
     if return_starting_pints:

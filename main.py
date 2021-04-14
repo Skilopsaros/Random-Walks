@@ -69,6 +69,38 @@ def run_bare(decouple,potential,J,number_of_drunkards,number_of_cycles,number_to
     m, c, am, ac = slp.best_fit_slope_and_intercept(xs,np.log(k))
     return(potential(j=J, return_results=True, m=m, am=am))
 
+def run_heatmap(text,potential):
+    while input('Run '+text+'? (Y/N) ')=='Y':
+        J = int(input('input the value of J: '))
+        number_of_drunkards = int(input('input the number of drunkards: '))
+        number_of_cycles = int(input('input the number of cycles: '))
+        tick_multiples = int(input('input the frequency of ticks in the graph (if 2D): '))
+
+        lattice = drk.simulation(potential, J, number_of_drunkards, number_of_cycles, return_positions=True) #This runs the simulation. To see how this runs, go to drunkard.py
+        print(lattice)
+        if potential(return_dimensions = True) == 1:
+            plt.clf()
+            plt.plot(range(int(-(len(lattice)-1)/2),int((len(lattice)-1)/2+1)),lattice)
+            plt.show()
+            plt.clf()
+
+        if potential(return_dimensions = True) == 2:
+            plt.clf()
+            tick = list(range(int(-(len(lattice)-1)/2),int((len(lattice)-1)/2+1)))
+            tick_str = []
+            for i in range(len(tick)):
+                if i%tick_multiples == 0:
+                    tick_str.append(str(tick[i]))
+                else:
+                    tick_str.append('')
+            plt.clf()
+            plt.xticks(ticks=np.arange(len(tick_str)),labels=tick_str)
+            plt.yticks(ticks=np.arange(len(tick_str)),labels=tick_str)
+            plt.imshow(lattice, cmap='hot',interpolation="nearest")#inferno colours are cooler
+            plt.show()
+            plt.clf()
+
+
 def run_generation(text,ask_decouple,potential):
     if input('Run '+text+'? (Y/N) ')=='Y':
         number_of_runs = int(input('input the number of runs: '))
@@ -95,6 +127,8 @@ def run_generation(text,ask_decouple,potential):
         print('standard deviation')
         print(np.std(ms))
         plt.hist(ms)
+        plt.xlabel("Results of simulations")
+        plt.ylabel("Frequency")
         plt.show()
 
 if input('Run Seperate tests? (Y/N) ')== 'Y':
@@ -116,3 +150,13 @@ if input('Run entire tests? (Y/N) ')== 'Y':
     run_generation('Energy level 1 of SHO',False,pnt.one_d_SHO_E1)
     run_generation('Energy level 2 of SHO',False,pnt.one_d_SHO_E2)
     run_generation('Energy level 1 of Hydrogen',False,pnt.hydrogen_E1)
+
+if input('Run heatmaps? (Y/N) ')== 'Y':
+    run_heatmap('Energy level 1 of 1 dimentional infinite square well',pnt.one_d_inf_sqare_well_E1)
+    run_heatmap('Energy level 2 of 1 dimentional infinite square well',pnt.one_d_inf_sqare_well_E2)
+    run_heatmap('Energy level 1 of 2 dimentional infinite circle well',pnt.two_d_inf_cyrcle_well_E1)
+    run_heatmap('Energy level 2 of 2 dimentional infinite circle well',pnt.two_d_inf_cyrcle_well_E2)
+    run_heatmap('Energy level 3 of 2 dimentional infinite circle well',pnt.two_d_inf_cyrcle_well_E3)
+    run_heatmap('Energy level 1 of SHO',pnt.one_d_SHO_E1)
+    run_heatmap('Energy level 2 of SHO',pnt.one_d_SHO_E2)
+    run_heatmap('Energy level 1 of Hydrogen',pnt.hydrogen_E1)
