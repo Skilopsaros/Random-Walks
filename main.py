@@ -54,7 +54,7 @@ def run(text,ask_decouple,potential):
         plt.show()
         plt.clf()
 
-def run_bare(decouple,potential,J,number_of_drunkards,number_of_cycles,number_to_cut):
+def run_bare(decouple,potential,J,number_of_drunkards,number_of_cycles,number_to_cut): #Same as the above but without asking for inputs or plotting anything, for use later
     ks, dead = drk.simulation(potential, J, number_of_drunkards, number_of_cycles)
     ks_copy=copy.deepcopy(ks)
     for i in range(number_to_cut):
@@ -69,7 +69,7 @@ def run_bare(decouple,potential,J,number_of_drunkards,number_of_cycles,number_to
     m, c, am, ac = slp.best_fit_slope_and_intercept(xs,np.log(k))
     return(potential(j=J, return_results=True, m=m, am=am))
 
-def run_heatmap(text,potential):
+def run_heatmap(text,potential): #Runs the program to show the shape of the distribution
     while input('Run '+text+'? (Y/N) ')=='Y':
         J = int(input('input the value of J: '))
         number_of_drunkards = int(input('input the number of drunkards: '))
@@ -101,7 +101,7 @@ def run_heatmap(text,potential):
             plt.clf()
 
 
-def run_generation(text,ask_decouple,potential):
+def run_generation(text,ask_decouple,potential):#runs multiple different runs with the same parameters, produces a mean and standard deviation
     if input('Run '+text+'? (Y/N) ')=='Y':
         number_of_runs = int(input('input the number of runs: '))
         J = int(input('input the value of J: '))
@@ -139,6 +139,9 @@ if input('Run Seperate tests? (Y/N) ')== 'Y':
     run('Energy level 3 of 2 dimentional infinite circle well',True,pnt.two_d_inf_cyrcle_well_E3)
     run('Energy level 1 of SHO',False,pnt.one_d_SHO_E1)
     run('Energy level 2 of SHO',False,pnt.one_d_SHO_E2)
+    run('Energy level 1 of 2D SHO',False,pnt.two_d_SHO_E1)
+    run('Energy level 2 of 2D SHO',False,pnt.two_d_SHO_E2)
+    run('Energy level 3 of 2D SHO',False,pnt.two_d_SHO_E3)
     run('Energy level 1 of Hydrogen',False,pnt.hydrogen_E1)
 
 if input('Run entire tests? (Y/N) ')== 'Y':
@@ -149,6 +152,9 @@ if input('Run entire tests? (Y/N) ')== 'Y':
     run_generation('Energy level 3 of 2 dimentional infinite circle well',True,pnt.two_d_inf_cyrcle_well_E3)
     run_generation('Energy level 1 of SHO',False,pnt.one_d_SHO_E1)
     run_generation('Energy level 2 of SHO',False,pnt.one_d_SHO_E2)
+    run_generation('Energy level 1 of 2D SHO',False,pnt.two_d_SHO_E1)
+    run_generation('Energy level 2 of 2D SHO',False,pnt.two_d_SHO_E2)
+    run_generation('Energy level 3 of 2D SHO',False,pnt.two_d_SHO_E3)
     run_generation('Energy level 1 of Hydrogen',False,pnt.hydrogen_E1)
 
 if input('Run heatmaps? (Y/N) ')== 'Y':
@@ -159,4 +165,6 @@ if input('Run heatmaps? (Y/N) ')== 'Y':
     run_heatmap('Energy level 3 of 2 dimentional infinite circle well',pnt.two_d_inf_cyrcle_well_E3)
     run_heatmap('Energy level 1 of SHO',pnt.one_d_SHO_E1)
     run_heatmap('Energy level 2 of SHO',pnt.one_d_SHO_E2)
-    run_heatmap('Energy level 1 of Hydrogen',pnt.hydrogen_E1)
+    run_heatmap('Energy level 1 of 2D SHO',pnt.two_d_SHO_E1)
+    run_heatmap('Energy level 2 of 2D SHO',pnt.two_d_SHO_E2)
+    run_heatmap('Energy level 3 of 2D SHO',pnt.two_d_SHO_E3)
