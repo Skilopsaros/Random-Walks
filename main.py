@@ -77,7 +77,6 @@ def run_heatmap(text,potential): #Runs the program to show the shape of the dist
         tick_multiples = int(input('input the frequency of ticks in the graph (if 2D): '))
 
         lattice = drk.simulation(potential, J, number_of_drunkards, number_of_cycles, return_positions=True) #This runs the simulation. To see how this runs, go to drunkard.py
-        print(lattice)
         if potential(return_dimensions = True) == 1:
             plt.clf()
             plt.plot(range(int(-(len(lattice)-1)/2),int((len(lattice)-1)/2+1)),lattice)
